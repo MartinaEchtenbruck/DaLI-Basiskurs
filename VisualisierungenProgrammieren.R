@@ -1,6 +1,5 @@
 # Benoetigte Pakete laden
-# install.packages("Rtools") # nur einmal ausfuehren
-# install.packages("ggplot") # nur einmal ausfuehren
+# install.packages("ggplot2") # nur einmal ausfuehren
 # install.packages("ggrepel") # nur einmal ausfuehren
 
 ### Benoetigte Bibliotheken laden
@@ -67,7 +66,7 @@ ggplot() +
         axis.text = element_blank(), legend.position = "none")
 
 
-### Darstellung der St‰dte (Punkte)
+### Darstellung der St√§dte (Punkte)
 ggplot(troops) + aes(x = long, y = lat, group=group) + geom_path() + 
   aes(color=direction, size= survivors) + scale_size(range=c(0.5, 15)) +
   scale_colour_manual(values = c("#e6ccab", "#000000")) +
@@ -82,9 +81,9 @@ ggplot() +
   theme(axis.title = element_blank(), axis.ticks = element_blank(),
         axis.text = element_blank(), legend.position = "none") +
   geom_point(data=cities, aes(x=long, y=lat), color="red")
-# Hier kommt geom_point hinzu, das sich auf die St‰dtedaten und nicht auf die
+# Hier kommt geom_point hinzu, das sich auf die St√§dtedaten und nicht auf die
 # Truppendaten bezieht. Wenn Datensatz oder Aestethics allgemein gesetzt wurden, 
-# dann m¸ssen die gesetzten Werte im Zweifelsfall ueberschrieben werden 
+# dann m√ºssen die gesetzten Werte im Zweifelsfall ueberschrieben werden 
 # (hier bspw. size und group). 
 # In der zweiten Formulierung, wo Daten und Aesthetics der Geometrie zugeordnet
 # wurden, ist das nicht noetig.
@@ -92,7 +91,7 @@ ggplot() +
 
 
 
-### Darstellung der St‰dte
+### Darstellung der St√§dte
 ggplot() + 
   geom_path(data = troops, aes(x = long, y = lat, group=group, color=direction, size=survivors)) + 
   scale_size(range=c(0.5, 15)) +
@@ -101,3 +100,4 @@ ggplot() +
         axis.text = element_blank(), legend.position = "none") +
   geom_point(data=cities, aes(x=long, y=lat), color="red") + 
   geom_text_repel(data=cities, aes(x=long, y=lat,label=city), color="red")
+
