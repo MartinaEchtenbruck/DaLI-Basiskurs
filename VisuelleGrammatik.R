@@ -1,7 +1,8 @@
 ### Benoetigte Pakete installieren und laden
-# install.packages("Rtools") # nur einmal ausfuehren
 # install.packages("ggplot2") # nur einmal ausfuehren
+# install.packages("scales")
 library(ggplot2)
+library("scales")
 
 ### URL zu Datensatz definieren
 url <- "https://raw.githubusercontent.com/konrad/DaLI_Basismodul_WiSe2021_2022/main/data/Rodenkirchen_processed.csv"
@@ -38,7 +39,7 @@ ggplot(data = dat.dali) + aes(x=Monat, y=NO2) + geom_line(na.rm = TRUE) +
   geom_point(na.rm = TRUE, color= "red")
 
 ### Wie kann man die Daten sinnvoll aggregieren? Dafuer bietet ggplot sogenannte 'Statistiken'
-### Die hier verwendeten Statistiken plotten das arithmetische Mittel (mean) für den Monat
+### Die hier verwendeten Statistiken plotten das arithmetische Mittel (mean) fÃ¼r den Monat
 
 ggplot(data = dat.dali) + aes(x=Monat, y=NO2) +
   stat_summary(fun = "mean", geom = "line", na.rm = TRUE)
@@ -47,10 +48,7 @@ ggplot(data = dat.dali) + aes(x=Monat, y=NO2) +
   stat_summary(fun = "mean", geom = "bar", na.rm = TRUE)
 
 
-### Wie kann man die Skalierung der Y-Achse ändern?
-
-install.packages("scales")
-library("scales")
+### Wie kann man die Skalierung der Y-Achse Ã¤ndern?
 ggplot(data = dat.dali) + aes(x=Monat, y=NO2) +
   stat_summary(fun = "mean", geom = "bar", na.rm = TRUE) +
   scale_y_log10( breaks = scales::trans_breaks("log10", function(x) 10^x), labels = scales::trans_format("log10", scales::math_format(10^.x)))
@@ -63,17 +61,17 @@ ggplot(data = dat.dali) + aes(x=Monat, y=NO2) +
 ### Und wie kann man die Facetten umsortieren?
 ggplot(data = dat.dali) + aes(x=Monat, y=NO2) +
   stat_summary(fun = "mean", geom = "bar", na.rm = TRUE) +
-  facet_grid(~forcats::fct_relevel(Index, "schlecht", "mäßig", "gut", "sehr gut"))
+  facet_grid(~forcats::fct_relevel(Index, "schlecht", "mÃ¤ÃŸig", "gut", "sehr gut"))
 
 ### Und jetzt einmal den Ozon-Wert statt den NO2-Wert plotten?
 ggplot(data = dat.dali) + aes(x=Monat, y=Ozon) + 
   stat_summary(fun = "mean", geom = "bar", na.rm = TRUE) +
-  facet_grid(~forcats::fct_relevel(Index, "schlecht", "mäßig", "gut", "sehr gut"))
+  facet_grid(~forcats::fct_relevel(Index, "schlecht", "mÃ¤ÃŸig", "gut", "sehr gut"))
 
 ### Und wie aendere ich das gesamte Aussehen des Plots?
 ggplot(data = dat.dali) + aes(x=Monat, y=NO2) +
   stat_summary(fun = "mean", geom = "bar", na.rm = TRUE) +
-  facet_grid(~forcats::fct_relevel(Index, "schlecht", "mäßig", "gut", "sehr gut")) +
+  facet_grid(~forcats::fct_relevel(Index, "schlecht", "mÃ¤ÃŸig", "gut", "sehr gut")) +
   theme_bw()
 
 
