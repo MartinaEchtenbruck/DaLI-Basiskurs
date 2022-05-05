@@ -2,7 +2,8 @@
 # install.packages("ggplot2") # nur einmal ausfuehren
 # install.packages("scales")
 library(ggplot2)
-library("scales")
+library(scales)
+library(forcats)
 
 ### URL zu Datensatz definieren
 url <- "https://raw.githubusercontent.com/konrad/DaLI_Basismodul_WiSe2021_2022/main/data/Rodenkirchen_processed.csv"
